@@ -11,6 +11,9 @@ public class Car {
     private List<Wheel> wheels;
     private Engine engine;
 
+    public Car(int i, String red, List<Wheel> testWheels, Engine testEngine) {
+    }
+
     //implement this class
 
     @Override
@@ -21,5 +24,9 @@ public class Car {
             + ", wheels=" + wheels
             + ", engine=" + engine
             + '}';
+    }
+
+    public Engine getEngine() {
+        return null;
     }
 }

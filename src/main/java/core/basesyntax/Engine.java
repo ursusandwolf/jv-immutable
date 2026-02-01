@@ -4,6 +4,9 @@ public class Engine {
     private int horsePower;
     private String manufacturer;
 
+    public Engine(int i, String someMaker) {
+    }
+
     //implement this class
 
     @Override
