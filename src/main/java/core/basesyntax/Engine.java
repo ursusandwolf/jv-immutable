@@ -1,8 +1,10 @@
 package core.basesyntax;
 
+import java.util.Objects;
+
 public class Engine implements Cloneable {
     private int horsePower;
-    private final String manufacturer;
+    private String manufacturer;
 
     public Engine(int i, String someMaker) {
         horsePower = i;
@@ -11,6 +13,18 @@ public class Engine implements Cloneable {
 
     public void setHorsePower(int i) {
         horsePower = i;
+    }
+
+    public void setManufacturer(String newMaker) {
+        manufacturer = newMaker;
+    }
+
+    public int getHorsePower() {
+        return horsePower;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
     }
 
     public Engine clone() {
@@ -23,5 +37,17 @@ public class Engine implements Cloneable {
             + "horsePower=" + horsePower
             + ", manufacturer='" + manufacturer + '\''
             + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Engine engine = (Engine) o;
+        return horsePower == engine.horsePower && Objects.equals(manufacturer, engine.manufacturer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(horsePower, manufacturer);
     }
 }

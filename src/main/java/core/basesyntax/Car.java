@@ -2,6 +2,7 @@ package core.basesyntax;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Make this class immutable. See requirements in task description.
@@ -33,6 +34,7 @@ public final class Car {
         newWheels.add(newWheel);
         return new Car(year, color, newWheels, getEngine());
     }
+
     @Override
     public String toString() {
         return "Car{"
@@ -43,11 +45,33 @@ public final class Car {
             + '}';
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
     public List<Wheel> getWheels() {
         return new ArrayList<>(wheels);
     }
 
     public Engine getEngine() {
         return engine.clone();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return year == car.year && Objects.equals(color, car.color)
+                && Objects.equals(wheels, car.wheels)
+                && Objects.equals(engine, car.engine);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year, color, wheels, engine);
     }
 }

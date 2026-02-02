@@ -1,7 +1,9 @@
 package core.basesyntax;
 
+import java.util.Objects;
+
 public class Wheel {
-    private final int radius;
+    private int radius;
 
     public Wheel(int i) {
         radius = i;
@@ -11,10 +13,26 @@ public class Wheel {
         return radius;
     }
 
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
     @Override
     public String toString() {
         return "Wheel{"
             + "radius=" + radius
             + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Wheel wheel = (Wheel) o;
+        return radius == wheel.radius;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(radius);
     }
 }
