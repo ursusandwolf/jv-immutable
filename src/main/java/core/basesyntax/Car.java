@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Make this class immutable. See requirements in task description.
