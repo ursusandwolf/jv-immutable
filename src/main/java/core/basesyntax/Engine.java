@@ -1,13 +1,21 @@
 package core.basesyntax;
 
-public class Engine {
+public class Engine implements Cloneable {
     private int horsePower;
-    private String manufacturer;
+    private final String manufacturer;
 
     public Engine(int i, String someMaker) {
+        horsePower = i;
+        manufacturer = someMaker;
     }
 
-    //implement this class
+    public void setHorsePower(int i) {
+        horsePower = i;
+    }
+
+    public Engine clone() {
+        return new Engine(horsePower, manufacturer);
+    }
 
     @Override
     public String toString() {

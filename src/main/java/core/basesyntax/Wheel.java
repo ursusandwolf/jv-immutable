@@ -1,12 +1,15 @@
 package core.basesyntax;
 
 public class Wheel {
-    private int radius;
+    private final int radius;
 
     public Wheel(int i) {
+        radius = i;
     }
 
-    //implement this class
+    public int getRadius() {
+        return radius;
+    }
 
     @Override
     public String toString() {
