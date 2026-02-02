@@ -13,11 +13,11 @@ public final class Car {
     private final List<Wheel> wheels;
     private final Engine engine;
 
-    public Car(int i, String red, List<Wheel> testWheels, Engine testEngine) {
-        year = i;
-        color = red;
-        wheels = testWheels;
-        engine = testEngine;
+    public Car(int year, String color, List<Wheel> wheels, Engine engine) {
+        this.year = year;
+        this.color = color;
+        this.wheels = (wheels == null) ? new ArrayList<>() : new ArrayList<>(wheels);
+        this.engine = (engine == null) ? null : engine.clone();
     }
 
     //implement this class
@@ -31,7 +31,7 @@ public final class Car {
 
     public Car addWheel(Wheel newWheel) {
         List newWheels = getWheels();
-        newWheels.add(newWheel);
+        newWheels.add(newWheel.clone());
         return new Car(year, color, newWheels, getEngine());
     }
 
@@ -63,7 +63,9 @@ public final class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Car car = (Car) o;
         return year == car.year && Objects.equals(color, car.color)
                 && Objects.equals(wheels, car.wheels)
