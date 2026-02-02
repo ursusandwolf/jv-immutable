@@ -78,9 +78,13 @@ public final class Car {
             return false;
         }
         Car car = (Car) o;
-        return year == car.year && Objects.equals(color, car.color)
-                && Objects.equals(wheels, car.wheels)
-                && Objects.equals(engine, car.engine);
+        return year == car.year && myEquals(color, car.color)
+                && myEquals(wheels, car.wheels)
+                && myEquals(engine, car.engine);
+    }
+
+    public static boolean myEquals(Object a, Object b) {
+        return (a == b) || (a != null && a.equals(b));
     }
 
     @Override
