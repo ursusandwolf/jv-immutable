@@ -89,6 +89,10 @@ public final class Car {
 
     @Override
     public int hashCode() {
-        return Objects.hash(year, color, wheels, engine);
+        int result = year;
+        result = 31 * result + Objects.hashCode(color);
+        result = 31 * result + Objects.hashCode(wheels);
+        result = 31 * result + Objects.hashCode(engine);
+        return result;
     }
 }
