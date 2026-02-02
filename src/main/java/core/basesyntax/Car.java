@@ -16,7 +16,10 @@ public final class Car {
     public Car(int year, String color, List<Wheel> wheels, Engine engine) {
         this.year = year;
         this.color = color;
-        this.wheels = (wheels == null) ? new ArrayList<>() : cloneWheels(wheels);
+        if (wheels == null) {
+            throw new NullPointerException("Wheels is null!");
+        }
+        this.wheels = cloneWheels(wheels);
         this.engine = (engine == null) ? null : engine.clone();
     }
 
@@ -66,7 +69,7 @@ public final class Car {
     }
 
     public Engine getEngine() {
-        return engine.clone();
+        return (engine == null) ? null : engine.clone();
     }
 
     @Override
