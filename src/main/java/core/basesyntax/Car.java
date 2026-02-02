@@ -15,7 +15,7 @@ public final class Car {
 
     public Car(int year, String color, List<Wheel> wheels, Engine engine) {
         this.year = year;
-        this.color = color;
+        this.color = (color == null) ? "" : color;
         if (wheels == null) {
             throw new NullPointerException("Wheels is null!");
         }
@@ -33,7 +33,7 @@ public final class Car {
     }
 
     public Car addWheel(Wheel newWheel) {
-        List newWheels = getWheels();
+        List<Wheel> newWheels = getWheels();
         newWheels.add(newWheel.clone());
         return new Car(year, color, newWheels, getEngine());
     }
